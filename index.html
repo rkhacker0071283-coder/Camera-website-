@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Camera</title>
+</head>
+
+<body>
+  <h2>📷 My Camera</h2>
+
+  <button onclick="openCamera()">Open Camera</button>
+
+  <br><br>
+
+  <video id="camera" autoplay playsinline width="300"></video>
+
+  <script>
+    async function openCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true
+        });
+
+        document.getElementById("camera").srcObject = stream;
+      } catch (error) {
+        alert("Camera permission nahi mili.");
+      }
+    }
+  </script>
+</body>
+</html>
